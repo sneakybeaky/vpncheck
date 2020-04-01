@@ -1,0 +1,10 @@
+apiVersion: skaffold/v1beta7
+kind: Config
+build:
+  artifacts:
+    - image: 309251581412.dkr.ecr.eu-west-1.amazonaws.com/ci/app/vpn-healthcheck
+deploy:
+  kubectl:
+    manifests:
+    - skaffold/k8s/*.yaml
+

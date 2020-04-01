@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>VPN Status {{ .Timestamp.Format "Mon Jan 2 15:04:05 MST 2006" }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VPN Status">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.2/pure-min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.2/grids-responsive-min.css">
+    <style>
+        html, .pure-g [class *= "pure-u"] {
+            background-color: white;
+            font-family: "Open Sans", sans-serif;
+        }
+
+        pre {
+            font-family: "Monaco", "Menlo", "Consolas", "Courier New", monospace;
+        }
+
+        body {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 80%;
+            margin-bottom: 20px;
+        }
+
+        .state {
+            border: 1px solid #cbcbcb;
+            padding: 6px;
+        }
+
+        .DOWN-telemetrystatus {
+            background: #ff0000;
+        }
+
+        .UP-telemetrystatus {
+            background: #32f20b;
+        }
+    </style>
+</head>
+<body>
+<div class="pure-g">
+    <div class="pure-u-1-1">
+        <h1>VPN Status at {{ .Timestamp.Format "Mon Jan 2 15:04:05 MST 2006" }}</h1>
+
+        {{range .Connections}}
+
+
+            <h2> VPN Connection {{.VpnConnectionId}} - "{{connectionName .}}"</h2>
+
+            <span>Tunnel Status</span>
+                <ul>
+                {{range .VgwTelemetry}}
+                    <li> Outside IP address {{ .OutsideIpAddress }} <code class="state {{.Status}}-telemetrystatus">{{ .Status }}</code> - (changed on {{.LastStatusChange}})</li>
+                {{end}}
+                </ul>
+
+        {{end}}
+
+        <p><a href="/raw">raw version</a></p>
+    </div>
+</div>
+
+
+<div class="pure-u-1 pure-u-md-1-2">
+    <h2>FAQ</h2>
+    <h3>What should the tunnel status be?</h3>
+    <p>The status should be <b>UP</b>.</p>
+
+    <h3>What if just one tunnel is up?</h3>
+    <p>
+        This mode of operation is not highly available - the other tunnel must be up for better reliability.
+    </p>
+
+</div>
+
+</body>
+</html>

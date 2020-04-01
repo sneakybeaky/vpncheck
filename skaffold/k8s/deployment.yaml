@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vpnck
+  labels:
+    app: vpnck
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vpnck
+  template:
+    metadata:
+      labels:
+        app: vpnck
+      annotations:
+        iam.amazonaws.com/role: "arn:aws:iam::354895340041:role/cross-account-vpn-status"
+    spec:
+      containers:
+        - name: vpnck
+          image: 309251581412.dkr.ecr.eu-west-1.amazonaws.com/ci/app/vpn-healthcheck
+          command: ["/app/vpnck"]
+          env:
+            - name: AWS_REGION
+              value: "eu-west-1"
+          ports:
+            - containerPort: 8080
+            - containerPort: 8081

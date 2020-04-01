@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Raw state data</title>
+</head>
+
+<body>
+      <pre>
+          {{- /*gotype: string*/ -}}
+          {{- .Timestamp }}
+{{range .Connections}}
+    {{- .}}
+{{end}}
+      </pre>
+</body>
+
+</html>

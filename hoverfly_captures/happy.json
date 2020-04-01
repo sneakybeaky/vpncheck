@@ -1,0 +1,82 @@
+{
+	"data": {
+		"pairs": [
+			{
+				"request": {
+					"path": [
+						{
+							"matcher": "exact",
+							"value": "/"
+						}
+					],
+					"method": [
+						{
+							"matcher": "exact",
+							"value": "POST"
+						}
+					],
+					"destination": [
+						{
+							"matcher": "exact",
+							"value": "ec2.eu-west-1.amazonaws.com"
+						}
+					],
+					"scheme": [
+						{
+							"matcher": "exact",
+							"value": "https"
+						}
+					],
+					"body": [
+						{
+							"matcher": "exact",
+							"value": "Action=DescribeVpnConnections&Version=2016-11-15"
+						}
+					],
+					"query": {}
+				},
+				"response": {
+					"status": 200,
+					"body": "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",
+					"encodedBody": true,
+					"headers": {
+						"Connection": [
+							"close"
+						],
+						"Content-Encoding": [
+							"gzip"
+						],
+						"Content-Type": [
+							"text/xml;charset=UTF-8"
+						],
+						"Date": [
+							"Wed, 20 Mar 2019 14:51:31 GMT"
+						],
+						"Hoverfly": [
+							"Was-Here"
+						],
+						"Server": [
+							"AmazonEC2"
+						],
+						"Transfer-Encoding": [
+							"chunked"
+						],
+						"Vary": [
+							"Accept-Encoding"
+						]
+					},
+					"templated": false
+				}
+			}
+		],
+		"globalActions": {
+			"delays": [],
+			"delaysLogNormal": []
+		}
+	},
+	"meta": {
+		"schemaVersion": "v5",
+		"hoverflyVersion": "v1.0.0-rc.2",
+		"timeExported": "2019-03-20T14:52:25Z"
+	}
+}
